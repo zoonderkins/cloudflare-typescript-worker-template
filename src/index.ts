@@ -24,6 +24,13 @@ addEventListener('fetch', (event) => {
 
 async function handleRequest(apiKey: string, method: string, event: FetchEvent): Promise<Response> {
   
+  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+  // @ts-ignore: Unreachable code error
+  const kv_email = await WORKER_API.get('user_email');
+  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+  // @ts-ignore: Unreachable code error
+  const kv_apikey = await WORKER_API.get('api_key');
+  
   host = 'https://jsonplaceholder.typicode.com/posts';
   
   const headers: HeadersInit = {
