@@ -6,11 +6,12 @@ let apiKey: string,
 
 addEventListener('fetch', (event) => {
   incomingURL = event.request.url;
-  apiKey = event.request.headers.get('x-api-key') || '';
+  apiKey = event.request.headers.get('api-key') || '';
   method = event.request.method;
   ua = event.request.headers.get('user-agent');
   encoding = event.request.headers.get('accept-encoding');
-if (method !== 'GET' && method !== 'POST')
+  if (method !== 'GET' && method !== 'POST');
+  
     return event.respondWith(new Response('Method not accept...'));
 
   try {
@@ -18,6 +19,7 @@ if (method !== 'GET' && method !== 'POST')
   } catch (e) {
     return event.respondWith(new Response('Error thrown ' + e.message));
   }
+  
 });
 
 async function handleRequest(apiKey: string, method: string, event: FetchEvent): Promise<Response> {
@@ -28,7 +30,7 @@ async function handleRequest(apiKey: string, method: string, event: FetchEvent):
     'User-Agent': ua!,
     Accept: '*/*',
     'Accept-Encoding': encoding!,
-    'Content-Type': 'application/json',
+    'Content-Type': 'application/json; charset=UTF-8',
     'x-forwarded-proto': 'https',
     'x-api-key': apiKey,
   };
