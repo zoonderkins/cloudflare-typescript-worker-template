@@ -1,0 +1,10 @@
+name = "api"
+type = "javascript"
+account_id = "xxxx"
+workers_dev = true
+route = "worker.example.com/*"
+zone_id = "xxxxx"
+
+kv_namespaces = [
+         { binding = "WORKER_API", id = "xxxxx" }
+]
